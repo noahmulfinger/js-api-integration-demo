@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SessionService } from './session.service';
+import { UserSession } from '@esri/arcgis-rest-auth';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-js-api-integration-demo';
+  constructor(private sessionService: SessionService) {}
+
+  ngOnInit() {
+    this.sessionService.checkForSignIn();
+  }
 }
